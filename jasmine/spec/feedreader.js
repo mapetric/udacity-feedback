@@ -9,6 +9,8 @@
  * to ensure they don't run until the DOM is ready.
  */
 
+// iterate trough an array if you find a value equal to true return true otherwise return false
+
 function ifTrueInArray(array) {
       for (let i = 0; i < array.length; i++) {
             if (array[i] === true) {
@@ -85,8 +87,14 @@ $(function() {
           */
 
             it('shows and hides when clicking the button', function(){
+
+                  // click on the menu button and check if the class was removed
+
                   $('.menu-icon-link').click();
                   expect($('body').hasClass('menu-hidden')).toBe(false);
+
+                  // click on the menu button and check if the class was added
+
                   $('.menu-icon-link').click();
                   expect($('body').hasClass('menu-hidden')).toBe(true);
             });
@@ -111,7 +119,8 @@ $(function() {
                   const array = [];
                   expect(feedElements.length).not.toBe(0);
 
-            /* ensures that there is an element with .entry class */
+                  // iterate trough all feedElements and check if the children elements posses the entry class and push true or false into the array
+
                   for (let i = 0; i < feedElements.length; i++) {
                         array.push($(feedElements[i]).children().hasClass('entry'));
                   }
@@ -131,6 +140,8 @@ $(function() {
          */
 
             let initHTML;
+
+            // call load feed and save the HTML into initHTML then call load feed(1) and save it into newHTML then check if the HTML-s are different
 
             beforeEach(function(done) {
                   loadFeed(0, function() {
